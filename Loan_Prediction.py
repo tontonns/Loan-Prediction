@@ -27,14 +27,14 @@ def main():
     credit_score=st.number_input("Credit Score", 300,850)
     previous_loan_defaults_on_file=st.radio("Indicator of Previous Loan Delinquencies", ["Yes","No"])
     
-    data = {'age' : int(person_age), 'gender' : person_gender, 'person_education' : person_education,
+    data = {'person_age' : int(person_age), 'person_gender' : person_gender, 'person_education' : person_education,
         'income' : int(person_income), 'experience' : person_emp_exp, 'person_home_ownership' : person_home_ownership,
         'loan_amnt' : int(loan_amnt), 'loan_intent' : loan_intent, 'loan_int_rate' : int(loan_int_rate),
         'loan_percent_income' : float(loan_percent_income), 'cb_person_cred_hist_length' : int(cb_person_cred_hist_length),
         'credit_score' : int(credit_score), 'previous_loan_defaults_on_file' : previous_loan_defaults_on_file}
 
     
-    df=pd.DataFrame([list(data.values())], columns=['age','gender', 'person_education', 'income','experience', 
+    df=pd.DataFrame([list(data.values())], columns=['person_age','person_gender', 'person_education', 'income','experience', 
                                                 'person_home_ownership', 'loan_amnt','loan_intent', 
                                                 'loan_int_rate', 'loan_percent_income', 'cb_person_cred_hist_length',
                                                 'credit_score', 'previous_loan_defaults_on_file'])
