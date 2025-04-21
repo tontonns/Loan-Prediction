@@ -30,7 +30,7 @@ def main():
     data = {'Age' : int(person_age), 'Gender' : person_gender, 'Education' : person_education,
             'Income' : int(person_income), 'Experience' : person_emp_exp, 'Home Ownership' : person_home_ownership,
             'Loan Amount' : int(loan_amnt), 'Loan Intention' : loan_intent, 'Loan Interest Rate' : int(loan_int_rate),
-            'Loan Percent Income' : int(loan_percent_income), 'Credit Duration' : int(cb_person_cred_hist_length),
+            'Loan Percent Income' : float(loan_percent_income), 'Credit Duration' : int(cb_person_cred_hist_length),
             'Credit Score' : int(credit_score), 'Previous Loan' : previous_loan_defaults_on_file}
     
     df=pd.DataFrame([list(data.values())], columns=['Age','Gender', 'Education', 'Income','Experience', 
