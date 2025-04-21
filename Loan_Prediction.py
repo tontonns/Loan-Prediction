@@ -22,7 +22,7 @@ def main():
     loan_amnt=st.number_input("Loan Amount Requested", 0,1000000000)
     loan_intent=st.radio("Loan Intention", ["Education","Medical","Venture","Personal","DebtConsolidation","HomeImprovement"])
     loan_int_rate=st.number_input("Loan Interest Rate", 0,100)
-    loan_percent_income=st.number_input("Loan Amount as a Percentage of Annual Income", 0,100)
+    loan_percent_income=st.number_input("Loan Amount as a Percentage of Annual Income", 0.00,100.00)
     cb_person_cred_hist_length=st.number_input("Loan Duration in Years", 0,100)
     credit_score=st.number_input("Credit Score", 300,850)
     previous_loan_defaults_on_file=st.radio("Indicator of Previous Loan Delinquencies", ["Yes","No"])
