@@ -55,10 +55,8 @@ def main():
         st.success(f'The prediction is: {result}')
 
 def make_prediction(features):
-    input_array = np.array(features).reshape(1, -1)
-    prediction = XGBC.predict(input_array)
+    prediction = XGBC.predict(features)
     return prediction[0]
-
 
 if __name__ == '__main__':
     main()
