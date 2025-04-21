@@ -29,25 +29,25 @@ def main():
     
     data = {'Age' : int(person_age), 'Gender' : person_gender, 'Education' : person_education,
             'Income' : int(person_income), 'Experience' : person_emp_exp, 'Home Ownership' : person_home_ownership,
-            'Loan Amount' : int(loan_amnt), 'Loan Intention' : loan_intent, 'Loan Interest Rate' : int(loan_int_rate),
+            'Loan Amount' : int(loan_amnt), 'Loan Intent' : loan_intent, 'Loan Interest Rate' : int(loan_int_rate),
             'Loan Percent Income' : float(loan_percent_income), 'Credit Duration' : int(cb_person_cred_hist_length),
             'Credit Score' : int(credit_score), 'Previous Loan' : previous_loan_defaults_on_file}
     
     df=pd.DataFrame([list(data.values())], columns=['Age','Gender', 'Education', 'Income','Experience', 
-                                                'Home Ownership', 'Loan Amount','Loan Intention', 
+                                                'Home Ownership', 'Loan Amount','Loan Intent', 
                                                 'Loan Interest Rate', 'Loan Percent Income', 'Credit Duration',
                                                 'Credit Score', 'Previous Loan'])
 
     df=df.replace(EncGen)
     df=df.replace(EncPL)
-    cat_li=df[['Loan Intention']]
+    cat_li=df[['Loan Intent']]
     cat_pe=df[['Education']]
     cat_ph=df[['Home Ownership']]
     cat_enc_li=pd.DataFrame(EncLI.transform(cat_li).toarray(),columns=EncLI.get_feature_names_out())
     cat_enc_pe=pd.DataFrame(EncPE.transform(cat_pe).toarray(),columns=EncPE.get_feature_names_out())
     cat_enc_ph=pd.DataFrame(EncPH.transform(cat_ph).toarray(),columns=EncPH.get_feature_names_out())
     df=pd.concat([df,cat_enc_li,cat_enc_pe,cat_enc_ph], axis=1)
-    df=df.drop(['Loan Intention', 'Education', 'Home Ownership'],axis=1)
+    df=df.drop(['Loan Intent', 'Education', 'Home Ownership'],axis=1)
     
     if st.button('Make Prediction'):
         features=df      
