@@ -20,7 +20,7 @@ def main():
     person_emp_exp=st.number_input("Years of Work Experience", 0,100)
     person_home_ownership=st.radio("Home Ownership Status", ["Own","Mortgage","Rent","Other"])
     loan_amnt=st.number_input("Loan Amount Requested", 0,1000000000)
-    loan_intent=st.radio("Loan Intention", ["Education","Medical","Venture","Personal","DebtConsolidation","HomeImprovement"])
+    loan_intent=st.radio("Loan Intention", ["EDUCATION","MEDICAL","VENTURE","PERSONAL","DEBTCONSOLIDATION","HOMEIMPROVEMENT"])
     loan_int_rate=st.number_input("Loan Interest Rate", 0,100)
     loan_percent_income=st.number_input("Loan Amount as a Percentage of Annual Income", 0.00,100.00)
     cb_person_cred_hist_length=st.number_input("Loan Duration in Years", 0,100)
