@@ -18,7 +18,7 @@ def main():
     person_education=st.radio("Level of Education", ["High School","Associate","Bachelor","Master","Doctorate"])
     person_income=st.number_input("Yearly Income", 0,1000000000)
     person_emp_exp=st.number_input("Years of Work Experience", 0,100)
-    person_home_ownership=st.radio("Home Ownership Status", ["Own","Mortgage","Rent","Other"])
+    person_home_ownership=st.radio("Home Ownership Status", ["OWN","MORTGAGE","RENT","OTHER"])
     loan_amnt=st.number_input("Loan Amount Requested", 0,1000000000)
     loan_intent=st.radio("Loan Intention", ["EDUCATION","MEDICAL","VENTURE","PERSONAL","DEBTCONSOLIDATION","HOMEIMPROVEMENT"])
     loan_int_rate=st.number_input("Loan Interest Rate", 0,100)
