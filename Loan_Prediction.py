@@ -27,27 +27,28 @@ def main():
     credit_score=st.number_input("Credit Score", 300,850)
     previous_loan_defaults_on_file=st.radio("Indicator of Previous Loan Delinquencies", ["Yes","No"])
     
-    data = {'Age' : int(person_age), 'Gender' : person_gender, 'Education' : person_education,
-            'Income' : int(person_income), 'Experience' : person_emp_exp, 'Home Ownership' : person_home_ownership,
-            'Loan Amount' : int(loan_amnt), 'Loan Intent' : loan_intent, 'Loan Interest Rate' : int(loan_int_rate),
-            'Loan Percent Income' : float(loan_percent_income), 'Credit Duration' : int(cb_person_cred_hist_length),
-            'Credit Score' : int(credit_score), 'Previous Loan' : previous_loan_defaults_on_file}
+    data = {'age' : int(person_age), 'gender' : person_gender, 'education' : person_education,
+        'income' : int(person_income), 'experience' : person_emp_exp, 'home_ownership' : person_home_ownership,
+        'loan_amnt' : int(loan_amnt), 'loan_intent' : loan_intent, 'loan_int_rate' : int(loan_int_rate),
+        'loan_percent_income' : float(loan_percent_income), 'cb_person_cred_hist_length' : int(cb_person_cred_hist_length),
+        'credit_score' : int(credit_score), 'previous_loan' : previous_loan_defaults_on_file}
+
     
-    df=pd.DataFrame([list(data.values())], columns=['Age','Gender', 'Education', 'Income','Experience', 
-                                                'Home Ownership', 'Loan Amount','Loan Intent', 
-                                                'Loan Interest Rate', 'Loan Percent Income', 'Credit Duration',
-                                                'Credit Score', 'Previous Loan'])
+    df=pd.DataFrame([list(data.values())], columns=['age','gender', 'education', 'income','experience', 
+                                                'home_ownership', 'loan_amnt','loan_intent', 
+                                                'loan_int_rate', 'loan_percent_income', 'cb_person_cred_hist_length',
+                                                'credit_score', 'previous_loan'])
 
     df=df.replace(EncGen)
     df=df.replace(EncPL)
-    cat_li=df[['Loan Intent']]
-    cat_pe=df[['Education']]
-    cat_ph=df[['Home Ownership']]
+    cat_li=df[['loan_intent']]
+    cat_pe=df[['education']]
+    cat_ph=df[['home_ownership']]
     cat_enc_li=pd.DataFrame(EncLI.transform(cat_li).toarray(),columns=EncLI.get_feature_names_out())
     cat_enc_pe=pd.DataFrame(EncPE.transform(cat_pe).toarray(),columns=EncPE.get_feature_names_out())
     cat_enc_ph=pd.DataFrame(EncPH.transform(cat_ph).toarray(),columns=EncPH.get_feature_names_out())
     df=pd.concat([df,cat_enc_li,cat_enc_pe,cat_enc_ph], axis=1)
-    df=df.drop(['Loan Intent', 'Education', 'Home Ownership'],axis=1)
+    df=df.drop(['loan_intent', 'education', 'home_ownership'],axis=1)
     
     if st.button('Make Prediction'):
         features=df      
