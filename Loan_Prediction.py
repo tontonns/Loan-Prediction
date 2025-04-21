@@ -14,7 +14,7 @@ def main():
     st.title('Loan Model Deployment')
 
     person_age=st.number_input("Age", 0, 100)
-    person_gender=st.radio("Gender", ["Male","Female"])
+    person_gender=st.radio("Gender", ["male","female"])
     person_education=st.radio("Level of Education", ["High School","Associate","Bachelor","Master","Doctorate"])
     person_income=st.number_input("Yearly Income", 0,1000000000)
     person_emp_exp=st.number_input("Years of Work Experience", 0,100)
