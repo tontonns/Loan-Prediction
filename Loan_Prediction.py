@@ -27,14 +27,14 @@ def main():
     credit_score=st.number_input("Credit Score", 300,850)
     previous_loan_defaults_on_file=st.radio("Indicator of Previous Loan Delinquencies", ["Yes","No"])
     
-    data = {'age' : int(person_age), 'gender' : person_gender, 'education' : person_education,
+    data = {'age' : int(person_age), 'gender' : person_gender, 'person_education' : person_education,
         'income' : int(person_income), 'experience' : person_emp_exp, 'home_ownership' : person_home_ownership,
         'loan_amnt' : int(loan_amnt), 'loan_intent' : loan_intent, 'loan_int_rate' : int(loan_int_rate),
         'loan_percent_income' : float(loan_percent_income), 'cb_person_cred_hist_length' : int(cb_person_cred_hist_length),
         'credit_score' : int(credit_score), 'previous_loan' : previous_loan_defaults_on_file}
 
     
-    df=pd.DataFrame([list(data.values())], columns=['age','gender', 'education', 'income','experience', 
+    df=pd.DataFrame([list(data.values())], columns=['age','gender', 'person_education', 'income','experience', 
                                                 'home_ownership', 'loan_amnt','loan_intent', 
                                                 'loan_int_rate', 'loan_percent_income', 'cb_person_cred_hist_length',
                                                 'credit_score', 'previous_loan'])
@@ -42,13 +42,13 @@ def main():
     df=df.replace(EncGen)
     df=df.replace(EncPL)
     cat_li=df[['loan_intent']]
-    cat_pe=df[['education']]
+    cat_pe=df[['person_education']]
     cat_ph=df[['home_ownership']]
     cat_enc_li=pd.DataFrame(EncLI.transform(cat_li).toarray(),columns=EncLI.get_feature_names_out())
     cat_enc_pe=pd.DataFrame(EncPE.transform(cat_pe).toarray(),columns=EncPE.get_feature_names_out())
     cat_enc_ph=pd.DataFrame(EncPH.transform(cat_ph).toarray(),columns=EncPH.get_feature_names_out())
     df=pd.concat([df,cat_enc_li,cat_enc_pe,cat_enc_ph], axis=1)
-    df=df.drop(['loan_intent', 'education', 'home_ownership'],axis=1)
+    df=df.drop(['loan_intent', 'person_education', 'home_ownership'],axis=1)
     
     if st.button('Make Prediction'):
         features=df      
